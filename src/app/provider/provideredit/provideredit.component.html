@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <h2 [ngStyle]="{'margin-bottom': '10px'}">Update</h2>
+
+  <form [formGroup]="providerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" [class.is-invalid]="providerForm.controls.name.invalid && providerForm.controls.name.touched" formControlName="name" class="form-control">
+      <div *ngIf="providerForm.controls.name.invalid && providerForm.controls.name.touched">
+        <small class="text-danger" *ngIf="providerForm.controls.name.errors?.required">Name is required</small>
+      </div>
+      <label>Address</label>
+      <input type="text" [class.is-invalid]="providerForm.controls.address.invalid && providerForm.controls.address.touched" formControlName="address" class="form-control">
+      <div *ngIf="providerForm.controls.address.invalid && providerForm.controls.address.touched">
+        <small class="text-danger" *ngIf="providerForm.controls.address.errors?.required">Address is required</small>
+      </div>
+      <label>Country</label>
+      <input type="text" [class.is-invalid]="providerForm.controls.country.invalid && providerForm.controls.country.touched" formControlName="country" class="form-control">
+      <div *ngIf="providerForm.controls.country.invalid && providerForm.controls.country.touched">
+        <small class="text-danger" *ngIf="providerForm.controls.country.errors?.required">Country is required</small>
+      </div>
+      <label>City</label>
+      <input type="text" [class.is-invalid]="providerForm.controls.city.invalid && providerForm.controls.city.touched" formControlName="city" class="form-control">
+      <div *ngIf="providerForm.controls.city.invalid && providerForm.controls.city.touched">
+        <small class="text-danger" *ngIf="providerForm.controls.city.errors?.required">City is required</small>
+      </div>
+      <label>State</label>
+      <input type="text" formControlName="state" class="form-control">
+      <label>Zip</label>
+      <input type="text" formControlName="zip" class="form-control">
+      <label>Phone</label>
+      <input type="text" formControlName="phone" class="form-control">
+      <label>Fax</label>
+      <input type="text" formControlName="fax" class="form-control">
+      <label>Email</label>
+      <input type="text" formControlName="email" class="form-control">
+      <label>Start Time</label>
+      <input type="text" formControlName="start_time" class="form-control">
+      <label>End Time</label>
+      <input type="text" formControlName="end_time" class="form-control">
+    </div>
+
+    <button class="btn btn-primary" [disabled]="!providerForm.valid" type="submit">Update</button>
+  </form>
+</div>

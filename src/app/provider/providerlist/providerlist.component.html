@@ -1,0 +1,29 @@
+
+<h2 [ngStyle]="{'text-align':'center', 'margin-bottom':'20px'}">Provider List</h2>
+<h3>{{errorMsg}}</h3>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Country</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let provider of providers; let i = index" >
+    <td (click)="onSelect(provider)">{{provider.id}}</td>
+    <td (click)="detail(provider)">{{provider.name | uppercase}}</td>
+    <td>{{provider.address}}</td>
+    <td>{{provider.country}}</td>
+    <td>{{provider.email}}</td>
+    <td>
+      <span [ngStyle]="{'margin-right': '20px'}"><button class="btn" (click)="edit(provider)">Edit</button></span>
+      <span><button class="btn" (click)="delete(provider.id, i)">Delete</button></span>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
