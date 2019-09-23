@@ -66,4 +66,7 @@ export class ProvidereditComponent implements OnInit {
       );
   }
 
+  goBack() {
+    this.router.navigate(['/provider'], { relativeTo: this.route });
+  }
 }

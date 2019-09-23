@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserService} from './user.service';
 import {ProviderService} from './provider.service';
 import {StorageService} from './storage.service';
+import { ProvidercreateComponent } from './provider/providercreate/providercreate.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {StorageService} from './storage.service';
     ProviderlistComponent,
     ProviderdetailComponent,
     ProvidereditComponent,
-    UserComponent
+    UserComponent,
+    ProvidercreateComponent
   ],
   imports: [
     BrowserModule,

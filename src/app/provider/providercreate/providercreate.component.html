@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h2 [ngStyle]="{'margin-bottom': '10px'}">Update</h2>
+  <h2 [ngStyle]="{'margin-bottom': '10px'}">Create New Service Provider</h2>
 
   <form [formGroup]="providerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -39,7 +39,8 @@
       <input type="text" formControlName="end_time" class="form-control">
     </div>
 
-    <button class="btn btn-primary" [disabled]="!providerForm.valid" type="submit">Update</button>
+    <button class="btn btn-primary" [disabled]="!providerForm.valid" type="submit">Submit</button>
     <button class="btn" (click)="goBack()">Cancel</button>
+
   </form>
 </div>
