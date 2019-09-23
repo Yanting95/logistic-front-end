@@ -10,7 +10,7 @@ import { ProvidereditComponent } from './provider/provideredit/provideredit.comp
 import {ProvidercreateComponent} from './provider/providercreate/providercreate.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: UserComponent },
   { path: 'provider/new', component: ProvidercreateComponent},

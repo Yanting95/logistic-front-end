@@ -9,8 +9,4 @@ import {StorageService} from './storage.service';
 })
 export class AppComponent {
   title = 'LogisticApp';
-  constructor(private user: UserService, private storage: StorageService) {}
-  logout() {
-    this.user.logout();
-  }
 }
