@@ -17,6 +17,8 @@ import {ProviderService} from './provider.service';
 import {StorageService} from './storage.service';
 import { ProvidercreateComponent } from './provider/providercreate/providercreate.component';
 import { NavComponent } from './nav/nav.component';
+import { ContactComponent } from './contact/contact.component';
+import { NoteComponent } from './note/note.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { NavComponent } from './nav/nav.component';
     ProvidereditComponent,
     UserComponent,
     ProvidercreateComponent,
-    NavComponent
+    NavComponent,
+    ContactComponent,
+    NoteComponent
   ],
   imports: [
     BrowserModule,
