@@ -5,7 +5,16 @@
 <div class="row">
   <div class="col-75">
     <div class="title">
-      <p>Provider Detail</p>
+      <span>Provider Detail</span>
+      <div class="btn-group">
+        <button class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Action
+        </button>
+        <div class="dropdown-menu">
+          <button class="dropdown-item" (click)="edit(provider)">Edit</button>
+          <button class="dropdown-item" (click)="delete(provider)">Delete</button>
+        </div>
+      </div>
     </div>
     <div class="container">
       <p>provider Id: {{provider.id}}</p>
@@ -17,6 +26,8 @@
       <p>Zip: {{provider.zip}}</p>
       <p>Phone: {{provider.phone}}</p>
       <p>Fax: {{provider.fax}}</p>
+      <p>Toll Free: {{provider.toll_free}}</p>
+      <p>Email: {{provider.email}}</p>
       <p>Business Hours: {{provider.start_time}} - {{provider.end_time}}</p>
       <p>User: {{provider.user}}</p>
     </div>
@@ -24,7 +35,16 @@
 
   <div class="col-50">
     <div class="title">
-      <p>Notes</p>
+      <span>Notes</span>
+      <div class="btn-group">
+        <button class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Action
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" >Add Note</a>
+          <a class="dropdown-item" >Edit</a>
+        </div>
+      </div>
     </div>
     <div class="container">
       <app-note></app-note>
@@ -33,7 +53,16 @@
 
   <div class="col-25">
     <div class="title">
-      <p>Contact</p>
+      <span>Contact</span>
+      <div class="btn-group">
+        <button class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Action
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" >Add Contact</a>
+          <a class="dropdown-item" >Edit</a>
+        </div>
+      </div>
     </div>
     <div class="container">
       <app-contact></app-contact>

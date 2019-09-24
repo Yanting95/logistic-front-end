@@ -8,7 +8,7 @@ export interface Provider {
   zip: string;
   phone: string;
   fax: string;
-  toll_fee: string;
+  toll_free: string;
   email: string;
   start_time: string;
   end_time: string;

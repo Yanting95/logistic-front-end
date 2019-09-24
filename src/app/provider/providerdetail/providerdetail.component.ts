@@ -12,7 +12,9 @@ export class ProviderdetailComponent implements OnInit {
   public providerId;
   public provider = [];
   public errorMsg;
-  constructor(private providerService: ProviderService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private providerService: ProviderService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -25,6 +27,18 @@ export class ProviderdetailComponent implements OnInit {
     );
   }
 
+  edit(provider) {
+    this.router.navigate(['/provider', provider.id, 'edit']);
+  }
+  delete(provider) {
+    this.providerService.deleteProvider(provider.id).subscribe(
+      response => {
+        console.log('Delete success');
+        this.goBack();
+      },
+      error => console.error('Error!', error)
+    );
+  }
   goBack() {
     this.router.navigate(['/provider'], { relativeTo: this.route });
   }

@@ -1,34 +1,16 @@
-.container-provider {
-  position: absolute;
-  max-width: 30%;
-}
-
-.container-note {
-  position: absolute;
-  max-width: 30%;
-  margin-left: 35%;
-}
-
-.container-contact {
-  position: absolute;
-  max-width: 30%;
-  margin-left: 70%;
-}
-
-
 .row {
   display: flex;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 .col-25 {
-  -ms-flex: 20%;
-  flex: 20%;
+  -ms-flex: 25%;
+  flex: 25%;
 }
 
 .col-50 {
-  -ms-flex: 40%;
-  flex: 40%;
+  -ms-flex: 35%;
+  flex: 35%;
 }
 
 .col-75 {
@@ -46,20 +28,31 @@
   background-color: white;
   padding: 5px 20px 15px 20px;
   border: 1px;
-  /*border-radius: 1rem;*/
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
 .title {
   background-color: lightgray;
   margin-bottom: 15px;
+  height: 31px;
 }
 
-.title p {
+.title span {
   padding: 30px auto;
   margin: auto 10px;
   font-size: 18px;
   font-weight: 600;
+}
+
+.btn-group {
+  float: right;
+  margin: auto 15px;
+  font-weight: 600;
+}
+
+.btn {
+  color: black;
+  text-decoration: none;
 }
 
 .icon-container {

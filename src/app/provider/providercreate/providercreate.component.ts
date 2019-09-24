@@ -22,6 +22,7 @@ export class ProvidercreateComponent implements OnInit {
       zip: ['', [Validators.required, Validators.maxLength(5)]],
       phone: ['', [Validators.maxLength(10)]],
       fax: ['', [Validators.maxLength(10)]],
+      toll_free: ['', [Validators.maxLength(10)]],
       email: ['', ],
       start_time: ['', ],
       end_time: ['', ],

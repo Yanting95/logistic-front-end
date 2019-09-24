@@ -42,9 +42,7 @@ export class ProviderlistComponent implements OnInit {
     // this.router.navigate(['/providers']);
   }
   edit(provider) {
-    // this.router.navigate(['/providers', 'edit', provider.id]);
     this.router.navigate(['/provider', provider.id, 'edit']);
-    // this.router.navigate([provider.id, 'edit'], { relativeTo: this.route });
   }
 
 }
