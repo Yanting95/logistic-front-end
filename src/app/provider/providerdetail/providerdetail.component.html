@@ -4,8 +4,10 @@
 
 <div class="row">
   <div class="col-75">
+    <div class="title">
+      <p>Provider Detail</p>
+    </div>
     <div class="container">
-      <h2 [ngStyle]="{'margin-bottom':'20px'}">Provider Detail</h2>
       <p>provider Id: {{provider.id}}</p>
       <p>Name: {{provider.name | uppercase}}</p>
       <p>Address: {{provider.address}}</p>
@@ -21,12 +23,18 @@
   </div>
 
   <div class="col-50">
+    <div class="title">
+      <p>Notes</p>
+    </div>
     <div class="container">
       <app-note></app-note>
     </div>
   </div>
 
   <div class="col-25">
+    <div class="title">
+      <p>Contact</p>
+    </div>
     <div class="container">
       <app-contact></app-contact>
     </div>
