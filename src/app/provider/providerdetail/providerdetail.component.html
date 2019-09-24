@@ -1,31 +1,35 @@
 <app-nav></app-nav>
 
-<div class="container-provider">
-  <h2 [ngStyle]="{'margin-bottom':'20px'}">Provider Detail</h2>
-  <p>provider Id: {{provider.id}}</p>
-  <p>Name: {{provider.name | uppercase}}</p>
-  <p>Address: {{provider.address}}</p>
-  <p>Country: {{provider.country}}</p>
-  <p>City: {{provider.city}}</p>
-  <p>State: {{provider.state | uppercase}}</p>
-  <p>Zip: {{provider.zip}}</p>
-  <p>Phone: {{provider.phone}}</p>
-  <p>Fax: {{provider.fax}}</p>
-  <p>Business Hours: {{provider.start_time}} - {{provider.end_time}}</p>
-  <p>User: {{provider.user}}</p>
-  <div>
-    <button class="btn" (click)="goBack()">Back to provider List</button>
-  </div>
-</div>
-
-<div class="container-note">
-  <app-note></app-note>
-</div>
-
-<div class="container-contact">
-  <app-contact></app-contact>
-</div>
-
 <router-outlet></router-outlet>
 
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <h2 [ngStyle]="{'margin-bottom':'20px'}">Provider Detail</h2>
+      <p>provider Id: {{provider.id}}</p>
+      <p>Name: {{provider.name | uppercase}}</p>
+      <p>Address: {{provider.address}}</p>
+      <p>Country: {{provider.country}}</p>
+      <p>City: {{provider.city}}</p>
+      <p>State: {{provider.state | uppercase}}</p>
+      <p>Zip: {{provider.zip}}</p>
+      <p>Phone: {{provider.phone}}</p>
+      <p>Fax: {{provider.fax}}</p>
+      <p>Business Hours: {{provider.start_time}} - {{provider.end_time}}</p>
+      <p>User: {{provider.user}}</p>
+    </div>
+  </div>
 
+  <div class="col-50">
+    <div class="container">
+      <app-note></app-note>
+    </div>
+  </div>
+
+  <div class="col-25">
+    <div class="container">
+      <app-contact></app-contact>
+    </div>
+  </div>
+
+</div>
