@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class UserComponent implements OnInit {
   public loginForm;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = {
@@ -24,6 +24,9 @@ export class UserComponent implements OnInit {
     this.userService.login(this.loginForm);
   }
 
+  signup() {
+    this.router.navigate(['/signup']);
+  }
   onLogout() {
     this.userService.logout();
   }

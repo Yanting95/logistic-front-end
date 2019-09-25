@@ -27,6 +27,7 @@ import { NotecreateComponent } from './note/notecreate/notecreate.component';
 import { NoteeditComponent } from './note/noteedit/noteedit.component';
 import { NotedeleteComponent } from './note/notedelete/notedelete.component';
 import { ContactdeleteComponent } from './contact/contactdelete/contactdelete.component';
+import { SignupComponent } from './user/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ContactdeleteComponent } from './contact/contactdelete/contactdelete.co
     NotecreateComponent,
     NoteeditComponent,
     NotedeleteComponent,
-    ContactdeleteComponent
+    ContactdeleteComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

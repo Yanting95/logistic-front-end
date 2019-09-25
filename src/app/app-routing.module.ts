@@ -12,11 +12,13 @@ import {ContactcreateComponent} from './contact/contactcreate/contactcreate.comp
 import {ContacteditComponent} from './contact/contactedit/contactedit.component';
 import {NotecreateComponent} from './note/notecreate/notecreate.component';
 import {NoteeditComponent} from './note/noteedit/noteedit.component';
+import {SignupComponent} from './user/signup/signup.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: UserComponent },
+  { path: 'signup', component: SignupComponent},
   { path: 'provider/new', component: ProvidercreateComponent},
   { path: 'provider/:id', component: ProviderdetailComponent},
   { path: 'provider/:id/edit', component: ProvidereditComponent},
@@ -45,5 +47,6 @@ export const routingComponents = [ProviderlistComponent,
                                   NotecreateComponent,
                                   NoteeditComponent,
                                   UserComponent,
+                                  SignupComponent,
                                   HomeComponent,
                                   PagenotfoundComponent];
