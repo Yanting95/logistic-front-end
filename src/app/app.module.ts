@@ -19,6 +19,14 @@ import { ProvidercreateComponent } from './provider/providercreate/providercreat
 import { NavComponent } from './nav/nav.component';
 import { ContactComponent } from './contact/contact.component';
 import { NoteComponent } from './note/note.component';
+import { ContactlistComponent } from './contact/contactlist/contactlist.component';
+import { NotelistComponent } from './note/notelist/notelist.component';
+import { ContacteditComponent } from './contact/contactedit/contactedit.component';
+import { ContactcreateComponent } from './contact/contactcreate/contactcreate.component';
+import { NotecreateComponent } from './note/notecreate/notecreate.component';
+import { NoteeditComponent } from './note/noteedit/noteedit.component';
+import { NotedeleteComponent } from './note/notedelete/notedelete.component';
+import { ContactdeleteComponent } from './contact/contactdelete/contactdelete.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +41,15 @@ import { NoteComponent } from './note/note.component';
     ProvidercreateComponent,
     NavComponent,
     ContactComponent,
-    NoteComponent
+    NoteComponent,
+    ContactlistComponent,
+    NotelistComponent,
+    ContacteditComponent,
+    ContactcreateComponent,
+    NotecreateComponent,
+    NoteeditComponent,
+    NotedeleteComponent,
+    ContactdeleteComponent
   ],
   imports: [
     BrowserModule,

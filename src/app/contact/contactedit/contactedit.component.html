@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <h3 [ngStyle]="{'margin-bottom': '10px'}">Update Contact</h3>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" formControlName="title" class="form-control">
+        <label>First Name</label>
+        <input type="text" [class.is-invalid]="contactForm.controls.first_name.invalid && contactForm.controls.first_name.touched" formControlName="first_name" class="form-control">
+        <div *ngIf="contactForm.controls.first_name.invalid && contactForm.controls.first_name.touched">
+          <small class="text-danger" *ngIf="contactForm.controls.first_name.errors?.required">First Name is required</small>
+        </div>
+        <label>Last Name</label>
+        <input type="text" [class.is-invalid]="contactForm.controls.last_name.invalid && contactForm.controls.last_name.touched" formControlName="last_name" class="form-control">
+        <div *ngIf="contactForm.controls.last_name.invalid && contactForm.controls.last_name.touched">
+          <small class="text-danger" *ngIf="contactForm.controls.last_name.errors?.required">Last Name is required</small>
+        </div>
+
+        <label>Mobile Number</label>
+        <input type="tel" [class.is-invalid]="contactForm.controls.mobile.invalid && contactForm.controls.mobile.touched" formControlName="mobile" class="form-control">
+        <div *ngIf="contactForm.controls.mobile.invalid && contactForm.controls.mobile.touched">
+          <small class="text-danger" *ngIf="contactForm.controls.mobile.errors?.required">Mobile Number is required</small>
+        </div>
+
+        <label>Office Number</label>
+        <input type="tel" [class.is-invalid]="contactForm.controls.phone.invalid && contactForm.controls.phone.touched" formControlName="phone" class="form-control">
+        <div *ngIf="contactForm.controls.phone.invalid && contactForm.controls.phone.touched">
+          <small class="text-danger" *ngIf="contactForm.controls.phone.errors?.required"> Office Phone is required</small>
+        </div>
+
+        <label>Fax</label>
+        <input type="tel" formControlName="fax" class="form-control">
+
+        <label>Toll</label>
+        <input type="tel" formControlName="toll_free" class="form-control">
+
+        <label>Email</label>
+        <input type="text" formControlName="email" class="form-control">
+        <div>
+          <button class="btn btn-primary btn-block text-uppercase" [disabled]="!contactForm.valid" type="submit">Update</button>
+          <button class="btn btn-sm btn-light btn-block text-uppercase" (click)="goBack()">Cancel</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

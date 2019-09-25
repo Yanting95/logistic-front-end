@@ -19,26 +19,27 @@ export class ContactService {
   };
   constructor(private http: HttpClient, private storage: StorageService) { }
   getContact(providerId: number): Observable<Contact[]> {
-    return this.http.get<Contact[]>(this.url + providerId + 'contact/', this.httpOptions)
+    return this.http.get<Contact[]>(this.url + providerId + '/contact/', this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'No data found');
   }
   getContactDetail(providerId: number, id: number): Observable<Provider[]> {
-    return this.http.get<Provider[]>(this.url + providerId + 'contact/' + id, this.httpOptions)
+    return this.http.get<Provider[]>(this.url + providerId + '/contact/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
   addContact(contactData, providerId: number) {
     contactData.provider = providerId;
     console.log(contactData);
-    return this.http.post<any>(this.url + providerId + 'contact/', contactData);
+    return this.http.post<any>(this.url + providerId + '/contact/', contactData, this.httpOptions);
   }
   editContact(contactData, providerId: number, id: number) {
     contactData.provider = providerId;
-    return this.http.put<any>(this.url + providerId + 'contact/' + id, contactData, this.httpOptions);
+    return this.http.put<any>(this.url + providerId + '/contact/' + id, contactData, this.httpOptions);
   }
   deleteContact(providerId: number, id: number) {
-    return this.http.delete(this.url + providerId + 'contact/' + id, this.httpOptions);
+    return this.http.delete(this.url + providerId + '/contact/' + id, this.httpOptions);
   }
+
 }

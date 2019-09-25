@@ -19,26 +19,26 @@ export class NoteService {
   };
   constructor(private http: HttpClient, private storage: StorageService) { }
   getNote(providerId: number): Observable<Note[]> {
-    return this.http.get<Note[]>(this.url + providerId + 'note/', this.httpOptions)
+    return this.http.get<Note[]>(this.url + providerId + '/note/', this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'No data found');
   }
   getNoteDetail(providerId: number, id: number): Observable<Provider[]> {
-    return this.http.get<Provider[]>(this.url + providerId + 'note/' + id, this.httpOptions)
+    return this.http.get<Provider[]>(this.url + providerId + '/note/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
   addNote(noteData, providerId: number) {
     noteData.provider = providerId;
     console.log(noteData);
-    return this.http.post<any>(this.url + providerId + 'note/', noteData);
+    return this.http.post<any>(this.url + providerId + '/note/', noteData, this.httpOptions);
   }
   editNote(noteData, providerId: number, id: number) {
     noteData.provider = providerId;
-    return this.http.put<any>(this.url + providerId + 'note/' + id, noteData, this.httpOptions);
+    return this.http.put<any>(this.url + providerId + '/note/' + id, noteData, this.httpOptions);
   }
   deleteNote(providerId: number, id: number) {
-    return this.http.delete(this.url + providerId + 'note/' + id, this.httpOptions);
+    return this.http.delete(this.url + providerId + '/note/' + id, this.httpOptions);
   }
 }

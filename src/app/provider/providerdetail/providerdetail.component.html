@@ -7,66 +7,38 @@
     <div class="title">
       <span>Provider Detail</span>
       <div class="btn-group">
-        <button class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-link btn-sm dropdown-toggle" id="action" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Action
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu dropdown-menu-right">
           <button class="dropdown-item" (click)="edit(provider)">Edit</button>
           <button class="dropdown-item" (click)="delete(provider)">Delete</button>
         </div>
       </div>
     </div>
     <div class="container">
-      <p>provider Id: {{provider.id}}</p>
-      <p>Name: {{provider.name | uppercase}}</p>
-      <p>Address: {{provider.address}}</p>
-      <p>Country: {{provider.country}}</p>
-      <p>City: {{provider.city}}</p>
-      <p>State: {{provider.state | uppercase}}</p>
-      <p>Zip: {{provider.zip}}</p>
-      <p>Phone: {{provider.phone}}</p>
-      <p>Fax: {{provider.fax}}</p>
-      <p>Toll Free: {{provider.toll_free}}</p>
-      <p>Email: {{provider.email}}</p>
-      <p>Business Hours: {{provider.start_time}} - {{provider.end_time}}</p>
-      <p>User: {{provider.user}}</p>
+      <p><span>provider Id:</span> {{provider.id}}</p>
+      <p><span>Name:</span> {{provider.name | uppercase}}</p>
+      <p><span>Address:</span> {{provider.address}}</p>
+      <p><span>Country:</span> {{provider.country}}</p>
+      <p><span>City:</span> {{provider.city}} &nbsp;&nbsp;&nbsp;&nbsp;
+         <span>State:</span> {{provider.state | uppercase}} &nbsp;&nbsp;&nbsp;&nbsp;
+         <span>Zip:</span> {{provider.zip}}</p>
+      <p><span>Phone:</span> {{provider.phone}}</p>
+      <p><span>Fax:</span> {{provider.fax}}</p>
+      <p><span>Toll Free:</span> {{provider.toll_free}}</p>
+      <p><span>Email:</span> {{provider.email}}</p>
+      <p><span>Business Hours:</span> {{provider.start_time}} - {{provider.end_time}}</p>
+      <p><span>User:</span> {{provider.user}}</p>
     </div>
   </div>
 
   <div class="col-50">
-    <div class="title">
-      <span>Notes</span>
-      <div class="btn-group">
-        <button class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Action
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" >Add Note</a>
-          <a class="dropdown-item" >Edit</a>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <app-note></app-note>
-    </div>
+      <app-notelist></app-notelist>
   </div>
 
   <div class="col-25">
-    <div class="title">
-      <span>Contact</span>
-      <div class="btn-group">
-        <button class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Action
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" >Add Contact</a>
-          <a class="dropdown-item" >Edit</a>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <app-contact></app-contact>
-    </div>
+      <app-contactlist></app-contactlist>
   </div>
 
 </div>

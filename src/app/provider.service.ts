@@ -32,7 +32,7 @@ export class ProviderService {
   addProvider(providerData) {
     providerData.user = this.storage.getUser().id;
     console.log(providerData);
-    return this.http.post<any>(this.url, providerData);
+    return this.http.post<any>(this.url, providerData, this.httpOptions);
   }
   editProvider(providerData, id: number) {
     providerData.user = this.storage.getUser().id;

@@ -8,21 +8,20 @@
     <th>Name</th>
     <th>Address</th>
     <th>Country</th>
+    <th>Phone</th>
     <th>Email</th>
-    <th></th>
+    <th>Business Hour</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let provider of providers; let i = index" >
     <td (click)="onSelect(provider)">{{provider.id}}</td>
     <td (click)="detail(provider)">{{provider.name | uppercase}}</td>
-    <td>{{provider.address}}</td>
+    <td>{{provider.address}}, {{provider.city}}, {{provider.state}}, {{provider.zip}}</td>
     <td>{{provider.country}}</td>
+    <td>{{provider.phone}}</td>
     <td>{{provider.email}}</td>
-    <td>
-      <span [ngStyle]="{'margin-right': '20px'}"><button class="btn" (click)="edit(provider)">Edit</button></span>
-      <span><button class="btn" (click)="delete(provider.id, i)">Delete</button></span>
-    </td>
+    <td>{{provider.start_time}} - {{provider.end_time}}</td>
   </tr>
   </tbody>
 </table>

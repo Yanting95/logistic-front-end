@@ -8,6 +8,10 @@ import { ProviderlistComponent } from './provider/providerlist/providerlist.comp
 import { ProviderdetailComponent } from './provider/providerdetail/providerdetail.component';
 import { ProvidereditComponent } from './provider/provideredit/provideredit.component';
 import {ProvidercreateComponent} from './provider/providercreate/providercreate.component';
+import {ContactcreateComponent} from './contact/contactcreate/contactcreate.component';
+import {ContacteditComponent} from './contact/contactedit/contactedit.component';
+import {NotecreateComponent} from './note/notecreate/notecreate.component';
+import {NoteeditComponent} from './note/noteedit/noteedit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -16,6 +20,10 @@ const routes: Routes = [
   { path: 'provider/new', component: ProvidercreateComponent},
   { path: 'provider/:id', component: ProviderdetailComponent},
   { path: 'provider/:id/edit', component: ProvidereditComponent},
+  { path: 'provider/:id/contact/new', component: ContactcreateComponent},
+  { path: 'provider/:id/contact/:id2/edit', component: ContacteditComponent},
+  { path: 'provider/:id/note/new', component: NotecreateComponent},
+  { path: 'provider/:id/note/:id2/edit', component: NoteeditComponent},
   { path: 'provider',   component: ProviderlistComponent,
     children: [
       { path: ':id', component: ProviderdetailComponent},
@@ -32,6 +40,10 @@ export const routingComponents = [ProviderlistComponent,
                                   ProviderdetailComponent,
                                   ProvidercreateComponent,
                                   ProvidereditComponent,
+                                  ContactcreateComponent,
+                                  ContacteditComponent,
+                                  NotecreateComponent,
+                                  NoteeditComponent,
                                   UserComponent,
                                   HomeComponent,
                                   PagenotfoundComponent];
