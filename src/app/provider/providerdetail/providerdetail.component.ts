@@ -47,4 +47,10 @@ export class ProviderdetailComponent implements OnInit {
     this.router.navigate(['/provider'], { relativeTo: this.route });
   }
 
+  confirmDelete(provider) {
+    if (confirm('Are you sure to delete')) {
+      this.delete(provider);
+      console.log('delete success!');
+    }
+  }
 }

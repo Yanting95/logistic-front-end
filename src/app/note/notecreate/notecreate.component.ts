@@ -14,6 +14,7 @@ import {StorageService} from '../../storage.service';
 export class NotecreateComponent implements OnInit {
   public user;
   public providerId;
+  public submit = false;
   public noteForm: FormGroup;
   constructor(private fb: FormBuilder,
               private noteService: NoteService,
@@ -35,7 +36,8 @@ export class NotecreateComponent implements OnInit {
   onSubmit() {
     console.log(this.noteForm);
     console.log(this.noteForm.value);
-    this.noteService.addNote(this.noteForm.value, this.providerId)
+    this.submit = true;
+    this.noteService.addNote(this.noteForm.value, this.providerId, this.user.id)
       .subscribe(
         response => {
           console.log('Success!', response);
@@ -50,7 +52,7 @@ export class NotecreateComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    if (this.noteForm.dirty) {
+    if (this.submit === false && this.noteForm.dirty) {
       return this.dialogService.confirm();
     }
     return true;

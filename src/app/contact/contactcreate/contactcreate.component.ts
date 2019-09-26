@@ -15,6 +15,7 @@ export class ContactcreateComponent implements OnInit {
   public user;
   public contactForm: FormGroup;
   public providerId: number;
+  public submit = false;
   constructor(private fb: FormBuilder,
               private contactService: ContactService,
               private router: Router,
@@ -43,7 +44,8 @@ export class ContactcreateComponent implements OnInit {
   onSubmit() {
     console.log(this.contactForm);
     console.log(this.contactForm.value);
-    this.contactService.addContact(this.contactForm.value, this.providerId)
+    this.submit = true;
+    this.contactService.addContact(this.contactForm.value, this.user.id, this.providerId)
       .subscribe(
         response => {
           console.log('Success!', response);
@@ -58,7 +60,7 @@ export class ContactcreateComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    if (this.contactForm.dirty) {
+    if (this.submit === false && this.contactForm.dirty) {
       return this.dialogService.confirm();
     }
     return true;

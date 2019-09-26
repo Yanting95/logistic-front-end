@@ -50,4 +50,11 @@ export class NotelistComponent implements OnInit {
     );
   }
 
+  confirmDelete(note, i) {
+    if (confirm('Are you sure to delete')) {
+      this.delete(note.id, i);
+      console.log('delete success!');
+    }
+  }
+
 }

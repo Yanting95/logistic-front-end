@@ -16,6 +16,7 @@ export class NoteeditComponent implements OnInit {
   public providerId;
   public noteId;
   public note;
+  public submit = false;
   public noteForm: FormGroup;
   constructor(private fb: FormBuilder,
               private noteService: NoteService,
@@ -47,7 +48,8 @@ export class NoteeditComponent implements OnInit {
   onSubmit() {
     console.log(this.providerId);
     console.log(this.noteForm.value);
-    this.noteService.editNote(this.noteForm.value, this.providerId, this.noteId)
+    this.submit = true;
+    this.noteService.editNote(this.noteForm.value, this.providerId, this.user.id, this.noteId)
       .subscribe(
         response => {
           console.log('Success!', response);
@@ -62,7 +64,7 @@ export class NoteeditComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    if (this.noteForm.dirty) {
+    if (this.submit === false && this.noteForm.dirty) {
       return this.dialogService.confirm();
     }
     return true;

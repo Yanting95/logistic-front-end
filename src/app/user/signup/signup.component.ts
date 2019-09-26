@@ -8,24 +8,29 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  public signupForm;
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
+  signupForm = {
+    username: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    is_superuser: false
+  };
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.signupForm = {
-      username: '',
-      password: '',
-    };
+
   }
 
   onSubmit() {
-    console.log(this.signupForm);
-    // this.userService.signup(this.signupForm);
-    this.router.navigate(['/login']);
+    this.userService.signup(this.signupForm).subscribe(
+      data => {
+        console.log('Success!', data);
+        this.router.navigate(['/login']);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
-
-  goBack() {
-    this.router.navigate(['/login'], { relativeTo: this.route });
-  }
-
 }

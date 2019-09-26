@@ -37,4 +37,11 @@ export class UserService {
     this.storage.removeToken();
     this.storage.removeUser();
   }
+
+  public signup(userData) {
+    console.log('Start signup');
+    console.log(userData);
+    return this.http.post<any>('http://127.0.0.1:8000/api/signup', userData);
+
+  }
 }

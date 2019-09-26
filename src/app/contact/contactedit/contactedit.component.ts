@@ -16,6 +16,7 @@ export class ContacteditComponent implements OnInit {
   public providerId;
   public contactId;
   public contact;
+  public submit = false;
   public contactForm: FormGroup;
   constructor(private fb: FormBuilder,
               private contactService: ContactService,
@@ -62,7 +63,8 @@ export class ContacteditComponent implements OnInit {
   onSubmit() {
     console.log(this.contactId);
     console.log(this.contactForm.value);
-    this.contactService.editContact(this.contactForm.value, this.providerId, this.contactId)
+    this.submit = true;
+    this.contactService.editContact(this.contactForm.value, this.providerId, this.user.id, this.contactId)
       .subscribe(
         response => {
           console.log('Success!', response);
@@ -77,7 +79,7 @@ export class ContacteditComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    if (this.contactForm.dirty) {
+    if (this.submit === false && this.contactForm.dirty) {
       return this.dialogService.confirm();
     }
     return true;

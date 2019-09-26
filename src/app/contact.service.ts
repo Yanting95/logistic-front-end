@@ -29,13 +29,15 @@ export class ContactService {
     return this.http.get<Provider[]>(this.url + providerId + '/contact/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
-  addContact(contactData, providerId: number) {
+  addContact(contactData, providerId: number, userId: number) {
     contactData.provider = providerId;
+    contactData.user = userId;
     console.log(contactData);
     return this.http.post<any>(this.url + providerId + '/contact/', contactData, this.httpOptions);
   }
-  editContact(contactData, providerId: number, id: number) {
+  editContact(contactData, providerId: number, userId: number, id: number) {
     contactData.provider = providerId;
+    contactData.user = userId;
     return this.http.put<any>(this.url + providerId + '/contact/' + id, contactData, this.httpOptions);
   }
   deleteContact(providerId: number, id: number) {

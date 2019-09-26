@@ -50,4 +50,11 @@ export class ContactlistComponent implements OnInit {
   edit(contact) {
     this.router.navigate(['/provider', this.providerId, 'contact', contact.id, 'edit']);
   }
+
+  confirmDelete(contact, i) {
+    if (confirm('Are you sure to delete')) {
+      this.delete(contact.id, i);
+      console.log('delete success!');
+    }
+  }
 }

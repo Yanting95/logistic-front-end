@@ -29,13 +29,15 @@ export class NoteService {
     return this.http.get<Provider[]>(this.url + providerId + '/note/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
-  addNote(noteData, providerId: number) {
+  addNote(noteData, providerId: number, userId: number) {
     noteData.provider = providerId;
+    noteData.user = userId;
     console.log(noteData);
     return this.http.post<any>(this.url + providerId + '/note/', noteData, this.httpOptions);
   }
-  editNote(noteData, providerId: number, id: number) {
+  editNote(noteData, providerId: number, userId: number, id: number) {
     noteData.provider = providerId;
+    noteData.user = userId;
     return this.http.put<any>(this.url + providerId + '/note/' + id, noteData, this.httpOptions);
   }
   deleteNote(providerId: number, id: number) {
