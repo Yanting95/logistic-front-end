@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProviderService} from '../../provider.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {DialogService} from '../../dialog.service';
 
 @Component({
   selector: 'app-provideredit',
@@ -13,7 +15,11 @@ export class ProvidereditComponent implements OnInit {
   public providerId;
   public provider;
   public providerForm: FormGroup;
-  constructor(private fb: FormBuilder, private providerService: ProviderService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private fb: FormBuilder,
+              private providerService: ProviderService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private dialogService: DialogService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -62,13 +68,20 @@ export class ProvidereditComponent implements OnInit {
       .subscribe(
         response => {
           console.log('Success!', response);
-          this.router.navigate(['/provider']);
+          this.router.navigate(['/provider'], this.providerId);
         },
         error => console.error('Error!', error)
       );
   }
 
   goBack() {
-    this.router.navigate(['/provider'], { relativeTo: this.route });
+    this.router.navigate(['/provider', this.providerId], { relativeTo: this.route });
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if (this.providerForm.dirty) {
+      return this.dialogService.confirm();
+    }
+    return true;
   }
 }

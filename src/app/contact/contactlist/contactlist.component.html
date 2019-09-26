@@ -1,6 +1,6 @@
 <div class="title">
   <span>Contact</span>
-  <div class="btn-group">
+  <div *ngIf="user.id == userId" class="btn-group">
     <a class="dropdown-item" (click)="add()">Add</a>
   </div>
 </div>
@@ -10,7 +10,7 @@
     <div class="card-body">
       <div class="card-title">
         {{contact.first_name}} {{contact.last_name}}
-        <button class="btn btn-link btn-sm dropdown-toggle" id="dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button *ngIf="user.id == contact.user" class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Action
         </button>
         <div class="dropdown-menu dropdown-menu-right">

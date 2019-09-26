@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NoteService} from '../../note.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {DialogService} from '../../dialog.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-notecreate',
@@ -11,7 +13,11 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 export class NotecreateComponent implements OnInit {
   public providerId;
   public noteForm: FormGroup;
-  constructor(private fb: FormBuilder, private noteService: NoteService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder,
+              private noteService: NoteService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private dialogService: DialogService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -39,4 +45,10 @@ export class NotecreateComponent implements OnInit {
     this.router.navigate(['/provider', this.providerId], { relativeTo: this.route });
   }
 
+  canDeactivate(): Observable<boolean> | boolean {
+    if (this.noteForm.dirty) {
+      return this.dialogService.confirm();
+    }
+    return true;
+  }
 }

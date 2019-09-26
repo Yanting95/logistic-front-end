@@ -6,7 +6,7 @@
   <div class="col-75">
     <div class="title">
       <span>Provider Detail</span>
-      <div class="btn-group">
+      <div class="btn-group" *ngIf="user.id == provider.user">
         <button class="btn btn-link btn-sm dropdown-toggle" id="action" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Action
         </button>

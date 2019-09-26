@@ -58,7 +58,7 @@
         <small class="text-danger" *ngIf="providerForm.controls.fax.errors?.max_length">Fax must be at most 10 characters</small>
       </div>
       <label>Toll Free</label>
-      <input type="text" [class.is-invalid]="providerForm.controls.toll_free.invalid" formControlName="foll_free" class="form-control">
+      <input type="text" [class.is-invalid]="providerForm.controls.toll_free.invalid" formControlName="toll_free" class="form-control">
       <div *ngIf="providerForm.controls.toll_free.invalid">
         <small class="text-danger" *ngIf="providerForm.controls.toll_free.errors?.max_length">Toll free must be at most 10 characters</small>
       </div>

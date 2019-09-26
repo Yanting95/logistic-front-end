@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProviderService} from '../../provider.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DialogService} from '../../dialog.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-providercreate',
@@ -10,7 +12,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ProvidercreateComponent implements OnInit {
   public providerForm: FormGroup;
-  constructor(private fb: FormBuilder, private providerService: ProviderService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder,
+              private providerService: ProviderService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private dialogService: DialogService) { }
+
 
   ngOnInit() {
     this.providerForm = this.fb.group({
@@ -44,5 +51,12 @@ export class ProvidercreateComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/provider'], { relativeTo: this.route });
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if (this.providerForm.dirty) {
+      return this.dialogService.confirm();
+    }
+    return true;
   }
 }

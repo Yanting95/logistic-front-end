@@ -3,4 +3,5 @@ export interface Note {
   note: string;
   created: string;
   provider: number;
+  user: number;
 }

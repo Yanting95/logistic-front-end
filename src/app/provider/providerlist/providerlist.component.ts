@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProviderService} from '../../provider.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-providerlist',
@@ -8,21 +9,20 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./providerlist.component.css']
 })
 export class ProviderlistComponent implements OnInit {
-
+  public user;
   public providers = [];
   public errorMsg;
-  constructor(private providerService: ProviderService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private providerService: ProviderService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.providerService.getProvider().subscribe(
       (data) => this.providers = data,
       (error) => this.errorMsg = error
     );
-  }
-
-  onSelect(provider) {
-    console.log(provider);
-    this.router.navigate(['/provider', provider.id]);
   }
 
   detail(provider) {

@@ -9,4 +9,5 @@ export interface Contact {
   toll_fee: string;
   email: string;
   provider: number;
+  user: number;
 }

@@ -14,9 +14,9 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let provider of providers; let i = index" >
-    <td (click)="onSelect(provider)">{{provider.id}}</td>
-    <td (click)="detail(provider)">{{provider.name | uppercase}}</td>
+  <tr *ngFor="let provider of providers; let i = index" (click)="detail(provider)">
+    <td>{{provider.id}}</td>
+    <td>{{provider.name | uppercase}}</td>
     <td>{{provider.address}}, {{provider.city}}, {{provider.state}}, {{provider.zip}}</td>
     <td>{{provider.country}}</td>
     <td>{{provider.phone}}</td>
@@ -25,4 +25,6 @@
   </tr>
   </tbody>
 </table>
-<button class="btn" (click)="create()">Add</button>
+<div *ngIf="user.is_superuser">
+  <button class="btn" (click)="create()">Add</button>
+</div>

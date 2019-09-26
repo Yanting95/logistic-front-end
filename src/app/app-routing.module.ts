@@ -13,20 +13,28 @@ import {ContacteditComponent} from './contact/contactedit/contactedit.component'
 import {NotecreateComponent} from './note/notecreate/notecreate.component';
 import {NoteeditComponent} from './note/noteedit/noteedit.component';
 import {SignupComponent} from './user/signup/signup.component';
+import {CanDeactivateGuardService} from './can-deactivate-guard.service';
+import {AuthenticationGuardService} from './authentication-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: UserComponent },
   { path: 'signup', component: SignupComponent},
-  { path: 'provider/new', component: ProvidercreateComponent},
-  { path: 'provider/:id', component: ProviderdetailComponent},
-  { path: 'provider/:id/edit', component: ProvidereditComponent},
-  { path: 'provider/:id/contact/new', component: ContactcreateComponent},
-  { path: 'provider/:id/contact/:id2/edit', component: ContacteditComponent},
-  { path: 'provider/:id/note/new', component: NotecreateComponent},
-  { path: 'provider/:id/note/:id2/edit', component: NoteeditComponent},
-  { path: 'provider',   component: ProviderlistComponent,
+  { path: 'provider/new', component: ProvidercreateComponent,
+    canActivate: [AuthenticationGuardService], canDeactivate: [CanDeactivateGuardService]},
+  { path: 'provider/:id', component: ProviderdetailComponent, canActivate: [AuthenticationGuardService]},
+  { path: 'provider/:id/edit', component: ProvidereditComponent,
+    canActivate: [AuthenticationGuardService], canDeactivate: [CanDeactivateGuardService]},
+  { path: 'provider/:id/contact/new', component: ContactcreateComponent,
+    canActivate: [AuthenticationGuardService], canDeactivate: [CanDeactivateGuardService]},
+  { path: 'provider/:id/contact/:id2/edit', component: ContacteditComponent,
+    canActivate: [AuthenticationGuardService], canDeactivate: [CanDeactivateGuardService]},
+  { path: 'provider/:id/note/new', component: NotecreateComponent,
+    canActivate: [AuthenticationGuardService], canDeactivate: [CanDeactivateGuardService]},
+  { path: 'provider/:id/note/:id2/edit', component: NoteeditComponent,
+    canActivate: [AuthenticationGuardService], canDeactivate: [CanDeactivateGuardService]},
+  { path: 'provider',   component: ProviderlistComponent, canActivate: [AuthenticationGuardService],
     children: [
       { path: ':id', component: ProviderdetailComponent},
     ]},

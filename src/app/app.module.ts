@@ -28,6 +28,10 @@ import { NoteeditComponent } from './note/noteedit/noteedit.component';
 import { NotedeleteComponent } from './note/notedelete/notedelete.component';
 import { ContactdeleteComponent } from './contact/contactdelete/contactdelete.component';
 import { SignupComponent } from './user/signup/signup.component';
+import {ContactService} from './contact.service';
+import {NoteService} from './note.service';
+import {CanDeactivateGuardService} from './can-deactivate-guard.service';
+import {DialogService} from './dialog.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,11 @@ import { SignupComponent } from './user/signup/signup.component';
   providers: [
     UserService,
     ProviderService,
-    StorageService
+    StorageService,
+    ContactService,
+    NoteService,
+    CanDeactivateGuardService,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })

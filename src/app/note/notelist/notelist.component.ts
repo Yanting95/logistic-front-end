@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NoteService} from '../../note.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-notelist',
@@ -8,20 +9,27 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
   styleUrls: ['./notelist.component.css']
 })
 export class NotelistComponent implements OnInit {
+  public user;
+  public userId;
   public providerId;
   public notes = [];
   public errorMsg;
   constructor(private noteService: NoteService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'));
       this.providerId = id;
     });
     this.noteService.getNote(this.providerId).subscribe(
-      (data) => {console.log(data); this.notes = data; },
+      (data) => {
+        console.log(data);
+        this.notes = data;
+        this.userId = this.notes[0]['user']; },
       (error) => {this.errorMsg = error; console.log(error); }
     );
   }

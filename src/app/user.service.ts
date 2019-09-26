@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {StorageService} from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private url = 'http://127.0.0.1:8000/api/login'
-  constructor(private http: HttpClient, private router: Router, private storage: StorageService) { }
+  public return = '';
+  private url = 'http://127.0.0.1:8000/api/login';
+  constructor(private http: HttpClient,
+              private router: Router,
+              private storage: StorageService,
+              private route: ActivatedRoute) { }
 
   public login(userData) {
+    this.route.queryParams
+      .subscribe(params => this.return = params['returnUrl'] || '/provider');
     this.http.post<any>(this.url, userData).subscribe(
       data => {
         console.log('Success!', data);
@@ -18,7 +24,7 @@ export class UserService {
         console.log(this.storage.getUser());
         this.storage.storeToken(data.token);
         console.log(this.storage.getToken());
-        this.router.navigate(['/provider']);
+        this.router.navigateByUrl(this.return);
       },
       error => {
         console.error('Error!', error);

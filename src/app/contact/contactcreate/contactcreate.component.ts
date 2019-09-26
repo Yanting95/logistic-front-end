@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ContactService} from '../../contact.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {DialogService} from '../../dialog.service';
 
 @Component({
   selector: 'app-contactcreate',
@@ -11,7 +13,11 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 export class ContactcreateComponent implements OnInit {
   public contactForm: FormGroup;
   public providerId: number;
-  constructor(private fb: FormBuilder, private contactService: ContactService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder,
+              private contactService: ContactService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private dialogService: DialogService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -47,4 +53,10 @@ export class ContactcreateComponent implements OnInit {
     this.router.navigate(['/provider', this.providerId], { relativeTo: this.route });
   }
 
+  canDeactivate(): Observable<boolean> | boolean {
+    if (this.contactForm.dirty) {
+      return this.dialogService.confirm();
+    }
+    return true;
+  }
 }

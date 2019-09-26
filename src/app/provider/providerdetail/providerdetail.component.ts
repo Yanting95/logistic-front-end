@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProviderService} from '../../provider.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-providerdetail',
@@ -9,14 +10,17 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 })
 export class ProviderdetailComponent implements OnInit {
 
+  public user;
   public providerId;
   public provider = [];
   public errorMsg;
   constructor(private providerService: ProviderService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'));
       this.providerId = id;

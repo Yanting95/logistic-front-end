@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NoteService} from '../../note.service';
+import {Observable} from 'rxjs';
+import {DialogService} from '../../dialog.service';
 
 @Component({
   selector: 'app-noteedit',
@@ -13,7 +15,11 @@ export class NoteeditComponent implements OnInit {
   public noteId;
   public note;
   public noteForm: FormGroup;
-  constructor(private fb: FormBuilder, private noteService: NoteService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private fb: FormBuilder,
+              private noteService: NoteService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private dialogService: DialogService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -49,5 +55,12 @@ export class NoteeditComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/provider', this.providerId], { relativeTo: this.route });
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if (this.noteForm.dirty) {
+      return this.dialogService.confirm();
+    }
+    return true;
   }
 }

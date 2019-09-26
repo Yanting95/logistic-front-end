@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ContactService} from '../../contact.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ProviderService} from '../../provider.service';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-contactlist',
@@ -9,20 +10,27 @@ import {ProviderService} from '../../provider.service';
   styleUrls: ['./contactlist.component.css']
 })
 export class ContactlistComponent implements OnInit {
+  public user;
+  public userId;
   public providerId;
   public contacts = [];
   public errorMsg;
   constructor(private contactService: ContactService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'));
       this.providerId = id;
     });
     this.contactService.getContact(this.providerId).subscribe(
-      (data) => {console.log(data); this.contacts = data; },
+      (data) => {
+        console.log(data);
+        this.contacts = data;
+        this.userId = this.contacts[0]['user']; },
       (error) => {this.errorMsg = error; console.log(error); }
     );
   }
