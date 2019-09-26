@@ -4,6 +4,7 @@ import {ProviderService} from '../../provider.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DialogService} from '../../dialog.service';
 import {Observable} from 'rxjs';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-providercreate',
@@ -11,25 +12,28 @@ import {Observable} from 'rxjs';
   styleUrls: ['./providercreate.component.css']
 })
 export class ProvidercreateComponent implements OnInit {
+  public user;
   public providerForm: FormGroup;
   constructor(private fb: FormBuilder,
               private providerService: ProviderService,
               private router: Router,
               private route: ActivatedRoute,
-              private dialogService: DialogService) { }
+              private dialogService: DialogService,
+              private storage: StorageService) { }
 
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.providerForm = this.fb.group({
       name: ['', [Validators.required]],
       address: ['', [Validators.required]],
       country: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      zip: ['', [Validators.required, Validators.maxLength(5)]],
-      phone: ['', [Validators.maxLength(10)]],
-      fax: ['', [Validators.maxLength(10)]],
-      toll_free: ['', [Validators.maxLength(10)]],
+      zip: ['', [Validators.required, Validators.pattern(/^[0-9]{5}$/)]],
+      phone: ['', [Validators.pattern(/^[0-9]{10}$/)]],
+      fax: ['', [Validators.pattern(/^[0-9]{10}$/)]],
+      toll_free: ['', [Validators.pattern(/^[0-9]{10}$/)]],
       email: ['', ],
       start_time: ['', ],
       end_time: ['', ],

@@ -4,6 +4,7 @@ import {ProviderService} from '../../provider.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {DialogService} from '../../dialog.service';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-provideredit',
@@ -11,7 +12,7 @@ import {DialogService} from '../../dialog.service';
   styleUrls: ['./provideredit.component.css']
 })
 export class ProvidereditComponent implements OnInit {
-
+  public user;
   public providerId;
   public provider;
   public providerForm: FormGroup;
@@ -19,9 +20,11 @@ export class ProvidereditComponent implements OnInit {
               private providerService: ProviderService,
               private route: ActivatedRoute,
               private router: Router,
-              private dialogService: DialogService) { }
+              private dialogService: DialogService,
+              private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'));
       this.providerId = id;
@@ -32,10 +35,10 @@ export class ProvidereditComponent implements OnInit {
       country: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      zip: ['', [Validators.required, Validators.maxLength(5)]],
-      phone: ['', [Validators.maxLength(10)]],
-      fax: ['', [Validators.maxLength(10)]],
-      toll_free: ['', [Validators.maxLength(10)]],
+      zip: ['', [Validators.required, Validators.pattern(/^[0-9]{5}$/)]],
+      phone: ['', [Validators.pattern(/^[0-9]{10}$/)]],
+      fax: ['', [Validators.pattern(/^[0-9]{10}$/)]],
+      toll_free: ['', [Validators.pattern(/^[0-9]{10}$/)]],
       email: ['', ],
       start_time: ['', ],
       end_time: ['', ],

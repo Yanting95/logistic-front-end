@@ -16,7 +16,7 @@ export class UserService {
 
   public login(userData) {
     this.route.queryParams
-      .subscribe(params => this.return = params['returnUrl'] || '/provider');
+      .subscribe(params => this.return = params['returnUrl'] || '/home');
     this.http.post<any>(this.url, userData).subscribe(
       data => {
         console.log('Success!', data);

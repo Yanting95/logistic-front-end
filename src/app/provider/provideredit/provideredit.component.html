@@ -1,5 +1,5 @@
 <app-nav></app-nav>
-<div class="container">
+<div *ngIf="user.id == provider.user; else elseBlock" class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <h3 [ngStyle]="{'margin-bottom': '10px'}">Update Service Provider</h3>
@@ -68,3 +68,6 @@
     </div>
   </div>
 </div>
+<ng-template #elseBlock>
+  <h3 class="else">No Authentication for This Page!</h3>
+</ng-template>

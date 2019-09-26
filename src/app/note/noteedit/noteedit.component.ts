@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NoteService} from '../../note.service';
 import {Observable} from 'rxjs';
 import {DialogService} from '../../dialog.service';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-noteedit',
@@ -11,6 +12,7 @@ import {DialogService} from '../../dialog.service';
   styleUrls: ['./noteedit.component.css']
 })
 export class NoteeditComponent implements OnInit {
+  public user;
   public providerId;
   public noteId;
   public note;
@@ -19,9 +21,11 @@ export class NoteeditComponent implements OnInit {
               private noteService: NoteService,
               private route: ActivatedRoute,
               private router: Router,
-              private dialogService: DialogService) { }
+              private dialogService: DialogService,
+              private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.route.paramMap.subscribe((params: ParamMap) => {
       let provider_id = parseInt(params.get('id'));
       this.providerId = provider_id;

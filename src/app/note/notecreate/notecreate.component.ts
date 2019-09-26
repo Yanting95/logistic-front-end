@@ -4,6 +4,7 @@ import {NoteService} from '../../note.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {DialogService} from '../../dialog.service';
 import {Observable} from 'rxjs';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-notecreate',
@@ -11,15 +12,18 @@ import {Observable} from 'rxjs';
   styleUrls: ['./notecreate.component.css']
 })
 export class NotecreateComponent implements OnInit {
+  public user;
   public providerId;
   public noteForm: FormGroup;
   constructor(private fb: FormBuilder,
               private noteService: NoteService,
               private router: Router,
               private route: ActivatedRoute,
-              private dialogService: DialogService) { }
+              private dialogService: DialogService,
+              private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'));
       this.providerId = id;

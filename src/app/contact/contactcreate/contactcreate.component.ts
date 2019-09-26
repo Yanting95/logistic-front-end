@@ -4,6 +4,7 @@ import {ContactService} from '../../contact.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {DialogService} from '../../dialog.service';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-contactcreate',
@@ -11,15 +12,18 @@ import {DialogService} from '../../dialog.service';
   styleUrls: ['./contactcreate.component.css']
 })
 export class ContactcreateComponent implements OnInit {
+  public user;
   public contactForm: FormGroup;
   public providerId: number;
   constructor(private fb: FormBuilder,
               private contactService: ContactService,
               private router: Router,
               private route: ActivatedRoute,
-              private dialogService: DialogService) { }
+              private dialogService: DialogService,
+              private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'));
       this.providerId = id;

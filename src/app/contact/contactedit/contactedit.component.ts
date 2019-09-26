@@ -4,6 +4,7 @@ import {ContactService} from '../../contact.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {DialogService} from '../../dialog.service';
+import {StorageService} from '../../storage.service';
 
 @Component({
   selector: 'app-contactedit',
@@ -11,6 +12,7 @@ import {DialogService} from '../../dialog.service';
   styleUrls: ['./contactedit.component.css']
 })
 export class ContacteditComponent implements OnInit {
+  public user;
   public providerId;
   public contactId;
   public contact;
@@ -19,9 +21,11 @@ export class ContacteditComponent implements OnInit {
               private contactService: ContactService,
               private route: ActivatedRoute,
               private router: Router,
-              private dialogService: DialogService) { }
+              private dialogService: DialogService,
+              private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getUser();
     this.route.paramMap.subscribe((params: ParamMap) => {
       let provider_id = parseInt(params.get('id'));
       this.providerId = provider_id;

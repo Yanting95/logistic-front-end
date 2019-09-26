@@ -1,6 +1,7 @@
 <app-nav></app-nav>
 <h2 [ngStyle]="{'text-align':'center', 'margin':'20px auto'}">Provider List</h2>
 <h3>{{errorMsg}}</h3>
+<div class="provider_list">
 <table class="table table-striped">
   <thead>
   <tr>
@@ -25,6 +26,7 @@
   </tr>
   </tbody>
 </table>
-<div *ngIf="user.is_superuser">
+<div *ngIf="user.is_superuser" class="provider_add">
   <button class="btn" (click)="create()">Add</button>
+</div>
 </div>
