@@ -13,6 +13,7 @@ import {StorageService} from '../../storage.service';
 })
 export class ProvidercreateComponent implements OnInit {
   public user;
+  public submit;
   public providerForm: FormGroup;
   constructor(private fb: FormBuilder,
               private providerService: ProviderService,
@@ -43,6 +44,7 @@ export class ProvidercreateComponent implements OnInit {
   onSubmit() {
     console.log(this.providerForm);
     console.log(this.providerForm.value);
+    this.submit = true;
     this.providerService.addProvider(this.providerForm.value)
       .subscribe(
         response => {
@@ -58,7 +60,7 @@ export class ProvidercreateComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    if (this.providerForm.dirty) {
+    if (this.submit === false && this.providerForm.dirty) {
       return this.dialogService.confirm();
     }
     return true;

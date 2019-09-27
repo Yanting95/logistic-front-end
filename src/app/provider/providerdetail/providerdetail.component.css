@@ -4,8 +4,8 @@
 }
 
 .col-25 {
-  -ms-flex: 25%;
-  flex: 25%;
+  -ms-flex: 30%;
+  flex: 30%;
 }
 
 .col-50 {
@@ -14,8 +14,8 @@
 }
 
 .col-75 {
-  -ms-flex: 40%;
-  flex: 40%;
+  -ms-flex: 35%;
+  flex: 35%;
 }
 
 .col-25,

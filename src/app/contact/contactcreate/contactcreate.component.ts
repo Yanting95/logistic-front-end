@@ -45,7 +45,7 @@ export class ContactcreateComponent implements OnInit {
     console.log(this.contactForm);
     console.log(this.contactForm.value);
     this.submit = true;
-    this.contactService.addContact(this.contactForm.value, this.user.id, this.providerId)
+    this.contactService.addContact(this.contactForm.value, this.providerId, this.user.id)
       .subscribe(
         response => {
           console.log('Success!', response);

@@ -30,7 +30,7 @@ export class ContactlistComponent implements OnInit {
       (data) => {
         console.log(data);
         this.contacts = data;
-        this.userId = this.contacts[0]['user']; },
+        },
       (error) => {this.errorMsg = error; console.log(error); }
     );
   }

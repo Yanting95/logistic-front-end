@@ -29,7 +29,7 @@ export class NotelistComponent implements OnInit {
       (data) => {
         console.log(data);
         this.notes = data;
-        this.userId = this.notes[0]['user']; },
+      },
       (error) => {this.errorMsg = error; console.log(error); }
     );
   }

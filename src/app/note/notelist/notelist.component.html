@@ -1,6 +1,6 @@
 <div class="title">
   <span>Note</span>
-  <div *ngIf="user.id == userId" class="btn-group">
+  <div *ngIf="user.is_superuser" class="btn-group">
       <a class="dropdown-item" (click)="add()">Add</a>
   </div>
 </div>
@@ -10,7 +10,7 @@
       <div class="card-body">
         <div class="card-title">
           {{note.created}}
-          <button *ngIf="user.id == note.user" class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button *ngIf="user.is_superuser" class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Action
           </button>
           <div class="dropdown-menu dropdown-menu-right">

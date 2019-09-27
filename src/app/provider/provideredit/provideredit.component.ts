@@ -15,6 +15,7 @@ export class ProvidereditComponent implements OnInit {
   public user;
   public providerId;
   public provider;
+  public submit = false;
   public providerForm: FormGroup;
   constructor(private fb: FormBuilder,
               private providerService: ProviderService,
@@ -67,6 +68,7 @@ export class ProvidereditComponent implements OnInit {
   onSubmit() {
     console.log(this.providerId);
     console.log(this.providerForm.value);
+    this.submit = true;
     this.providerService.editProvider(this.providerForm.value, this.providerId)
       .subscribe(
         response => {
@@ -82,7 +84,7 @@ export class ProvidereditComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    if (this.providerForm.dirty) {
+    if (this.submit === false && this.providerForm.dirty) {
       return this.dialogService.confirm();
     }
     return true;
