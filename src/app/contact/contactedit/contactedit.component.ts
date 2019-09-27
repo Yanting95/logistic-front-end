@@ -37,11 +37,11 @@ export class ContacteditComponent implements OnInit {
       title: ['', ],
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      fax: ['', [Validators.maxLength(10)]],
-      toll_free: ['', [Validators.maxLength(10)]],
-      email: ['', ]
+      mobile: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      fax: ['', [Validators.pattern(/^[0-9]{10}$/)]],
+      toll_free: ['', [Validators.pattern(/^[0-9]{10}$/)]],
+      email: ['', [Validators.pattern(/^[a-zA-Z]{1}[a-zA-Z0-9.\-_]*@[a-zA-Z]{1}[a-zA-Z.-]*[a-zA-Z]{1}[.][a-zA-Z]{2,}$/)]]
     });
     this.contactService.getContactDetail(this.providerId, this.contactId).subscribe(
       (data) => {

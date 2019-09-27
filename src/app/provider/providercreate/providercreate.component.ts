@@ -35,7 +35,7 @@ export class ProvidercreateComponent implements OnInit {
       phone: ['', [Validators.pattern(/^[0-9]{10}$/)]],
       fax: ['', [Validators.pattern(/^[0-9]{10}$/)]],
       toll_free: ['', [Validators.pattern(/^[0-9]{10}$/)]],
-      email: ['', ],
+      email: ['', [Validators.pattern(/^[a-zA-Z]{1}[a-zA-Z0-9.\-_]*@[a-zA-Z]{1}[a-zA-Z.-]*[a-zA-Z]{1}[.][a-zA-Z]{2,}$/)]],
       start_time: ['', ],
       end_time: ['', ],
     });

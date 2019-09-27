@@ -23,22 +23,31 @@
         <input type="tel" [class.is-invalid]="contactForm.controls.mobile.invalid && contactForm.controls.mobile.touched" formControlName="mobile" class="form-control">
         <div *ngIf="contactForm.controls.mobile.invalid && contactForm.controls.mobile.touched">
           <small class="text-danger" *ngIf="contactForm.controls.mobile.errors?.required">Mobile Number is required</small>
+          <small class="text-danger" *ngIf="contactForm.controls.mobile.errors?.pattern">Mobile Number must be 10 digits</small>
         </div>
 
         <label>Office Number</label>
         <input type="tel" [class.is-invalid]="contactForm.controls.phone.invalid && contactForm.controls.phone.touched" formControlName="phone" class="form-control">
         <div *ngIf="contactForm.controls.phone.invalid && contactForm.controls.phone.touched">
           <small class="text-danger" *ngIf="contactForm.controls.phone.errors?.required"> Office Phone is required</small>
+          <small class="text-danger" *ngIf="contactForm.controls.phone.errors?.pattern">Office Phone must be 10 digits</small>
         </div>
 
         <label>Fax</label>
-        <input type="tel" formControlName="fax" class="form-control">
-
-        <label>Toll</label>
-        <input type="tel" formControlName="toll_free" class="form-control">
-
+        <input type="tel" [class.is-invalid]="contactForm.controls.fax.invalid" formControlName="fax" class="form-control">
+        <div *ngIf="contactForm.controls.fax.invalid">
+          <small class="text-danger" *ngIf="contactForm.controls.fax.errors?.pattern">Fax must be 10 digits</small>
+        </div>
+        <label>Toll Free</label>
+        <input type="tel" [class.is-invalid]="contactForm.controls.toll_free.invalid" formControlName="toll_free" class="form-control">
+        <div *ngIf="contactForm.controls.toll_free.invalid">
+          <small class="text-danger" *ngIf="contactForm.controls.toll_free.errors?.pattern">Toll free must be 10 digits</small>
+        </div>
         <label>Email</label>
         <input type="email" formControlName="email" class="form-control">
+        <div *ngIf="contactForm.controls.email.invalid">
+          <small class="text-danger" *ngIf="contactForm.controls.email.errors?.pattern">Email must be in right format</small>
+        </div>
 
       </div>
       <div>
