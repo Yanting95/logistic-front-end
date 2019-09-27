@@ -8,12 +8,14 @@ import {StorageService} from '../storage.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+  public userId;
   constructor(private user: UserService, private storage: StorageService) {}
 
   ngOnInit() {
   }
   logout() {
-    this.user.logout();
+    this.userId = this.storage.getUser()['id'];
+    console.log(this.userId);
+    this.user.logout(this.userId);
   }
 }

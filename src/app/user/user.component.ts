@@ -27,7 +27,5 @@ export class UserComponent implements OnInit {
   signup() {
     this.router.navigate(['/signup']);
   }
-  onLogout() {
-    this.userService.logout();
-  }
+
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StorageService} from './storage.service';
 
@@ -9,6 +9,7 @@ import {StorageService} from './storage.service';
 export class UserService {
   public return = '';
   private url = 'http://127.0.0.1:8000/api/login';
+  private httpOptions;
   constructor(private http: HttpClient,
               private router: Router,
               private storage: StorageService,
@@ -33,9 +34,25 @@ export class UserService {
     );
   }
 
-  public logout() {
-    this.storage.removeToken();
-    this.storage.removeUser();
+  public logout(id: number) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'token ' + this.storage.getToken()
+      })
+    };
+    // console.log(this.storage.getToken());
+    // console.log('http://127.0.0.1:8000/api/logout/' + id);
+    // console.log(this.httpOptions);
+    this.http.get('http://127.0.0.1:8000/api/logout/' + id, this.httpOptions).subscribe(
+      data => {
+        console.log('Success!', data);
+        this.storage.removeToken();
+        this.storage.removeUser();
+      },
+      error => {
+        console.error('Error!', error);
+      });
   }
 
   public signup(userData) {
